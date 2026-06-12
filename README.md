@@ -1,5 +1,7 @@
 # Mechu — AI 메뉴 추천 앱
 
+![Java](https://img.shields.io/badge/Java-007396?style=for-the-badge&logo=openjdk&logoColor=white) ![Android](https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white) ![SQLite](https://img.shields.io/badge/SQLite-003B57?style=for-the-badge&logo=sqlite&logoColor=white) ![OpenAI](https://img.shields.io/badge/OpenAI-412991?style=for-the-badge&logo=openai&logoColor=white)
+
 사용자 프로필(신체 정보·식습관)을 기반으로 AI 챗봇과 대화하며 식사 메뉴를 추천받는 Android 앱.
 3인 팀 프로젝트(2학년) — 팀장으로 기획부터 구현까지 대부분의 기능을 직접 개발했다.
 처음으로 AI API를 실제 서비스에 통합해 본 프로젝트로, 이후 모든 AI 활용 프로젝트의 출발점.
