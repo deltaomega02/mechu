@@ -50,7 +50,7 @@ public class Chatting extends AppCompatActivity {
     public static final MediaType JSON = MediaType.get("application/json; charset=utf-8");
     OkHttpClient client;
 
-    private static final String MY_SECRET_KEY = "ss";
+    private static final String MY_SECRET_KEY = "YOUR_OPENAI_API_KEY";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

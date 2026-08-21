@@ -133,8 +133,8 @@ public class SignUp2 extends AppCompatActivity {
 
         @Override
         protected Boolean doInBackground(String... params) {
-            final String user_id = "YOUR_NAVER_ACCOUNT@naver.com"; // 이메일 계정
-            final String password = "sss"; // 이메일 계정의 비밀번호
+            final String user_id = "YOUR_NAVER_ACCOUNT@naver.com"; // 발신용 네이버 계정
+            final String password = "YOUR_NAVER_APP_PASSWORD"; // 발신 계정 비밀번호
 
             Properties props = new Properties();
             props.put("mail.smtp.host", "smtp.naver.com");      //이메일 서버 호스트 설정
