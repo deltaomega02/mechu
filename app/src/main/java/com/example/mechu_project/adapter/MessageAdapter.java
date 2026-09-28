@@ -26,13 +26,11 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
     private List<Message> messageList;
     private Context context;
 
-    // MessageAdapter의 생성자
     public MessageAdapter(List<Message> messageList, Context context) {
         this.messageList = messageList;
         this.context = context;
     }
 
-    // ViewHolder 객체를 생성하여 반환하는 메서드
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -40,7 +38,6 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
         return new ViewHolder(view);
     }
 
-    // ViewHolder에 데이터를 바인딩하는 메서드
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Message message = messageList.get(position);
@@ -55,7 +52,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
 
             if (message.isMenuItem()) {
                 holder.menuRecommendationLayout.setVisibility(View.VISIBLE);
-                holder.leftChatTv.setVisibility(View.GONE); // 기존 텍스트 숨기기
+                holder.leftChatTv.setVisibility(View.GONE);
 
                 holder.menuNameTextView.setText(message.getMenuName());
                 holder.menuCalorieTextView.setText(String.format("%s kcal", message.getCalorie()));
@@ -69,7 +66,6 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
                     holder.menuImageView.setImageResource(R.drawable.characterlogo);
                 }
 
-                // 메뉴 추천 레이아웃에 대한 클릭 리스너 추가
                 holder.menuRecommendationLayout.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -83,18 +79,16 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
 
             } else {
                 holder.menuRecommendationLayout.setVisibility(View.GONE);
-                holder.leftChatTv.setVisibility(View.VISIBLE); // 기존 텍스트 보이기
+                holder.leftChatTv.setVisibility(View.VISIBLE);
             }
         }
     }
 
-    // 데이터셋의 크기를 반환하는 메서드
     @Override
     public int getItemCount() {
         return messageList.size();
     }
 
-    // 각 데이터 항목에 대한 참조를 제공하는 뷰홀더 클래스
     public static class ViewHolder extends RecyclerView.ViewHolder {
         LinearLayout leftChatView, rightChatView, menuRecommendationLayout;
         TextView leftChatTv, rightChatTv, menuNameTextView, menuCalorieTextView;

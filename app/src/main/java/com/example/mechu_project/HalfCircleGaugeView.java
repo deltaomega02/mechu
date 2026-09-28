@@ -20,12 +20,12 @@ public class HalfCircleGaugeView extends View {
 
     private void initPaints() {
         backgroundPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        backgroundPaint.setColor(Color.parseColor("#e8d7c9")); // 배경색
+        backgroundPaint.setColor(Color.parseColor("#e8d7c9"));
         backgroundPaint.setStyle(Paint.Style.STROKE);
         backgroundPaint.setStrokeWidth(40);
 
         foregroundPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        foregroundPaint.setColor(Color.parseColor("#f6a44c")); // 전경색
+        foregroundPaint.setColor(Color.parseColor("#f6a44c"));
         foregroundPaint.setStyle(Paint.Style.STROKE);
         foregroundPaint.setStrokeWidth(40);
     }
@@ -40,9 +40,7 @@ public class HalfCircleGaugeView extends View {
             gaugeRect = new RectF(40, height - (width - 80) / 2, width - 40, height + (width - 80) / 2);
         }
 
-        // 배경 원호
         canvas.drawArc(gaugeRect, 180, 180, false, backgroundPaint);
-        // 전경 원호
-        canvas.drawArc(gaugeRect, 180, 90, false, foregroundPaint); // 50% 진행률 예시
+        canvas.drawArc(gaugeRect, 180, 90, false, foregroundPaint); // 게이지 테스트용 고정값
     }
 }

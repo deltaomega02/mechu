@@ -40,13 +40,11 @@ public class SignUp3 extends AppCompatActivity {
         radioButtonFemale = findViewById(R.id.radioButtonFemale);
         goalSpinner = findViewById(R.id.goalSpinner);
 
-        // 첫 번째 페이지에서 전달된 데이터 받기
         Intent intent = getIntent();
         user_id = intent.getStringExtra("user_id");
 
         Button signupNext = findViewById(R.id.signupNext);
 
-        // Sign Up 버튼에 클릭 리스너 설정
         if (signupNext != null) {
             signupNext.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -64,7 +62,6 @@ public class SignUp3 extends AppCompatActivity {
                             updateUser(user_id, gender, height, weight, goal, goalWeight);
                             showMessage("회원가입이 완료되었습니다.");
 
-                            // SignUpEnd로
                             Intent intent = new Intent(SignUp3.this, SignUpEnd.class);
                             startActivity(intent);
                         } else {
@@ -77,11 +74,10 @@ public class SignUp3 extends AppCompatActivity {
             });
         }
 
-        // 뒤로 가기 버튼 클릭 리스너 설정
         findViewById(R.id.backButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onBackPressed(); // 뒤로 가기 기능
+                onBackPressed();
             }
         });
     }

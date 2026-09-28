@@ -7,7 +7,7 @@ public class Message {
     private String message;
     private int sentBy;
     private String menuName;
-    private String foodImgPath; // 이미지 경로 필드
+    private String foodImgPath;
     private double calorie;
     private boolean isMenuItem;
 
@@ -21,7 +21,7 @@ public class Message {
         this.message = message;
         this.sentBy = sentBy;
         this.menuName = menuName;
-        this.foodImgPath = foodImgPath; // 이미지 경로 사용
+        this.foodImgPath = foodImgPath;
         this.calorie = calorie;
         this.isMenuItem = true;
     }

@@ -14,11 +14,8 @@ import android.widget.Toast;
 import java.util.HashMap;
 import java.util.Map;
 
-
 public class DatabaseHelper extends SQLiteOpenHelper {
     public static String NAME = "0501_latest.db";
-    //version 4->6 업데이트
-    //not null 제약조건 전부 삭제
     public static int VERSION = 6;
     private Context context;
     private static final String TAG = "DatabaseHelper";
@@ -33,7 +30,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         println("onCreate 호출됨");
 
         db.execSQL("CREATE TABLE IF NOT EXISTS meal_log ( " +
-                "log_id INTEGER PRIMARY KEY AUTOINCREMENT, " + //자동증가
+                "log_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "user_id TEXT, " +
                 "meal_date TEXT, " +
                 "meal_time TEXT, " +
@@ -42,9 +39,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "FOREIGN KEY(food_num) REFERENCES food(food_num));");
 
         db.execSQL("CREATE TABLE IF NOT EXISTS food ( " +
-                "food_num INTEGER PRIMARY KEY AUTOINCREMENT, " +  //자동증가
+                "food_num INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "food_name TEXT UNIQUE, " +
-                "food_img TEXT, " + // BLOB에서 TEXT로 변경
+                "food_img TEXT, " +
                 "calorie REAL, " +
                 "carbs REAL, " +
                 "protein REAL, " +
@@ -52,7 +49,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "category_name TEXT);");
 
         db.execSQL("CREATE TABLE IF NOT EXISTS review ( " +
-                "review_id INTEGER PRIMARY KEY AUTOINCREMENT, " +  //자동증가
+                "review_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "user_id TEXT, " +
                 "review_date TEXT, " +
                 "review_like INTEGER, " +
@@ -60,7 +57,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "FOREIGN KEY(user_id) REFERENCES user(user_id));");
 
         db.execSQL("CREATE TABLE IF NOT EXISTS search ( " +
-                "search_num INTEGER PRIMARY KEY AUTOINCREMENT, " +  //자동증가
+                "search_num INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "user_id TEXT, " +
                 "search_term TEXT, " +
                 "search_date TEXT, " +
@@ -551,7 +548,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
                         statement.clearBindings();
                         statement.bindString(1, foodName);
-                        statement.bindString(2, isSaved ? imageName : ""); // 이미지 파일 이름 저장
+                        statement.bindString(2, isSaved ? imageName : "");
 
                         String[] parts = food.replace("(", "").replace(")", "").split(",");
                         statement.bindDouble(3, Double.parseDouble(parts[2].trim()));
@@ -565,7 +562,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                         log("이미지 리소스를 찾을 수 없음: " + foodName);
                     }
 
-                    // 진행 상황 업데이트
                     publishProgress((int) ((i / (float) foods.length) * 100));
                 }
 

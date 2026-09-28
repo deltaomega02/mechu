@@ -30,7 +30,6 @@ public class Introductory extends AppCompatActivity {
         bar = findViewById(R.id.bar);
         lottie = findViewById(R.id.lottie);
         login_layout = findViewById(R.id.loginLayout);
-        //로그인창 초기투명도설정
         login_layout.setAlpha(0f);
 
         bar.animate().translationY(-1100).setDuration(700).setStartDelay(2800);
@@ -38,7 +37,6 @@ public class Introductory extends AppCompatActivity {
         miniLogo.animate().translationY(-1100).setDuration(700).setStartDelay(2800);
         lottie.animate().translationY(3000).setDuration(700).setStartDelay(2500);
 
-        // DatabaseHelper 인스턴스 생성
         SQLiteDatabase db = com.example.mechu_project.MyApplication.getDatabase();
 
         login_layout.postDelayed(new Runnable() {
@@ -47,18 +45,16 @@ public class Introductory extends AppCompatActivity {
                 login_layout.setVisibility(View.VISIBLE);
                 login_layout.animate().alpha(1f).setDuration(500).start();
             }
-        }, 3400); // 3.4초 후에 실행
+        }, 3400); // 스플래시 대기 시간
 
         Button signUpButton = findViewById(R.id.signupButton);
         Button goChat = findViewById(R.id.goChat);
 
         Button loginButton = findViewById(R.id.loginButton);
-        // Sign Up 버튼에 클릭 리스너 설정
         if (signUpButton != null) {
             signUpButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    // SignUp1로
                     Intent intent = new Intent(Introductory.this, SignUp1.class);
                     startActivity(intent);
                 }
@@ -69,7 +65,6 @@ public class Introductory extends AppCompatActivity {
             goChat.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    // Chatting으로 이동
                     Intent intent = new Intent(Introductory.this, Chatting.class);
                     startActivity(intent);
                 }

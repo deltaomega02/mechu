@@ -4,10 +4,7 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-//내정보
-
 public class Profile extends AppCompatActivity {
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

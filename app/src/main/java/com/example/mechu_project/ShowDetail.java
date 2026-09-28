@@ -36,10 +36,8 @@ public class ShowDetail extends AppCompatActivity {
         carbsProgressText = findViewById(R.id.carbsProgressText);
         fatProgressText = findViewById(R.id.fatProgressText);
 
-        // 인텐트에서 데이터 가져오기
         String menuName = getIntent().getStringExtra("menuName");
 
-        // 데이터베이스에서 데이터 가져오기
         DatabaseHelper dbHelper = new DatabaseHelper(this);
         Cursor cursor = dbHelper.getFoodDetails(menuName);
 
@@ -51,14 +49,12 @@ public class ShowDetail extends AppCompatActivity {
             double protein = cursor.getDouble(cursor.getColumnIndexOrThrow("protein"));
             double fat = cursor.getDouble(cursor.getColumnIndexOrThrow("fat"));
 
-            // 데이터 설정
             menuTitleTextView.setText(foodName);
             menuCalorieTextView.setText(String.format("%s kcal", calorie));
             menuCarbohydrateTextView.setText(String.format("탄수화물: %s g", carbs));
             menuProteinTextView.setText(String.format("단백질: %s g", protein));
             menuFatTextView.setText(String.format("지방: %s g", fat));
 
-            // 원형 프로그레스 바 설정 및 텍스트 업데이트
             setCircularProgress(proteinProgressBar, protein, 50, proteinProgressText, "단백질");
             setCircularProgress(carbsProgressBar, carbs, 300, carbsProgressText, "탄수화물");
             setCircularProgress(fatProgressBar, fat, 70, fatProgressText, "지방");
@@ -68,21 +64,20 @@ public class ShowDetail extends AppCompatActivity {
                 if (bitmap != null) {
                     menuImageView.setImageBitmap(bitmap);
                 } else {
-                    menuImageView.setImageResource(R.drawable.characterlogo); // 기본 이미지 설정
+                    menuImageView.setImageResource(R.drawable.characterlogo);
                 }
             } else {
-                menuImageView.setImageResource(R.drawable.characterlogo); // 기본 이미지 설정
+                menuImageView.setImageResource(R.drawable.characterlogo);
             }
 
             cursor.close();
         }
 
-        // 뒤로 가기 버튼 설정
         ImageView backButton = findViewById(R.id.backButton);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish(); // 현재 액티비티 종료
+                finish();
             }
         });
     }

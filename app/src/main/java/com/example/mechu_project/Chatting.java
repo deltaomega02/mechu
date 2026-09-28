@@ -130,7 +130,6 @@ public class Chatting extends AppCompatActivity {
                 messageAdapter.notifyDataSetChanged();
                 recyclerView.smoothScrollToPosition(messageAdapter.getItemCount());
 
-                // 이미지 데이터를 별도로 로드
                 loadFoodImage(menuName, messageList.size() - 1);
             });
         }
@@ -142,7 +141,7 @@ public class Chatting extends AppCompatActivity {
         Cursor cursor = db.rawQuery("SELECT food_img FROM food WHERE food_name = ?", new String[]{menuName});
         if (cursor.moveToFirst()) {
             String foodImgPath = cursor.getString(cursor.getColumnIndexOrThrow("food_img"));
-            File imgFile = new File(getFilesDir(), "images/" + foodImgPath); // 이미지 디렉토리 경로 포함
+            File imgFile = new File(getFilesDir(), "images/" + foodImgPath);
 
             Bitmap bitmap = null;
             if (imgFile.exists()) {
@@ -153,7 +152,6 @@ public class Chatting extends AppCompatActivity {
             runOnUiThread(() -> {
                 if (finalBitmap != null) {
                     Toast.makeText(this, "이미지 로드 성공", Toast.LENGTH_SHORT).show();
-                    // 이미지를 Message 객체에 추가하고 어댑터를 업데이트
                     messageList.get(position).setFoodImgPath(imgFile.getAbsolutePath());
                     messageAdapter.notifyItemChanged(position);
                 } else {
